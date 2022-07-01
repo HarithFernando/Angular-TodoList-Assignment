@@ -1,0 +1,25 @@
+<div class="login-page">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div>
+            <span class="p-float-label form-field">
+                <input id="float-input" type="text" pInputText formControlName="userName">
+                <label for="float-input">Username</label>
+                <p-message severity="error" text="Field is required" *ngIf="isRequiredUserName"></p-message>
+            </span>
+            <span class="p-float-label form-field">
+                <input id="float-input" type="text" pInputText formControlName="password" autocomplete="off">
+                <label for="float-input">Password</label>
+                <p-message severity="error" text="Field is required" *ngIf="isRequiredPassword"></p-message>
+            </span>
+        </div>
+        <div class="form-field">
+            <button pButton type="button" label="Clear" class="p-button-text" (click)="clearForm()" style="width:50%;"></button>
+            <button pButton type="submit" label="Login" class="p-button-text" [disabled]="!isFormFilled" style="width:50%;"></button>
+        </div>
+        <div *ngIf="isInvalidLogin" class="errorMessage">
+            <p-message severity="error" text="Invalid Login" styleClass="mr-2"></p-message>
+        </div>
+    </form>
+
+</div>
